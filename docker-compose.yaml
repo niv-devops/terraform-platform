@@ -1,0 +1,14 @@
+services:
+  terraform-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: terraform-platform:latest
+    container_name: terraform-platform
+    ports:
+      - "3000:3000"
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: "/app/gcp-key.json"
+    volumes:
+      - ${GOOGLE_KEY_PATH}:/app/gcp-key.json:ro
+    restart: unless-stopped

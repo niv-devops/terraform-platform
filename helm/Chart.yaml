@@ -1,0 +1,7 @@
+apiVersion: v2
+name: terraform-platform
+description: A Helm chart for Terraform Dashboard Platform
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+icon: https://icon.icepanel.io/Technology/svg/HashiCorp-Terraform.svg

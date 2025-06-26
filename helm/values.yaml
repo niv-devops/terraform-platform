@@ -1,0 +1,46 @@
+namespace: terraform-platform
+replicaCount: 1
+
+image:
+  repository: devopsgoofy/terraform-platform
+  tag: "latest"
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: regcred
+
+service:
+  name: terraform-platform-service
+  port: 80
+  targetPort: 3000
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+
+tolerations:
+  - key: "kubernetes.io/arch"
+    operator: "Equal"
+    value: "arm64"
+    effect: "NoSchedule"
+
+env:
+  NODE_ENV: production
+  NEXT_TELEMETRY_DISABLED: 1
+  PORT: 3000
+  GOOGLE_APPLICATION_CREDENTIALS: "/app/gcp-key.json"
+
+volumes:
+  - name: gcp-key-volume
+    secret:
+      secretName: terraform-platform-gcp-key
+
+volumeMounts:
+  - name: gcp-key-volume
+    mountPath: "/app/gcp-key.json"
+    subPath: gcp-key.json
+    readOnly: true
