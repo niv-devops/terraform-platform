@@ -1,5 +1,9 @@
 # 🚀 Terraform Platform
 
+<div align="center">
+    <img src="./images/hepheastack.png" alt="DevOps Exercises" width="300">
+</div>
+
 A modern, interactive dashboard for visualizing and managing your Terraform infrastructure with advanced cost analysis and plan comparison features.
 
 ![Terraform Dashboard](https://img.shields.io/badge/Terraform-Dashboard-blue?style=for-the-badge&logo=terraform)
